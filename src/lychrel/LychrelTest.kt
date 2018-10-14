@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class LichrelTest {
+class LychrelTest {
 
     private val limit: Int = 1000
 
@@ -17,6 +17,7 @@ class LichrelTest {
         convergesAtIteration(10, 1)
         convergesAtIteration(11, 0)
         convergesAtIteration(19, 2)
+        convergesAtIteration(78, 4)
     }
 
     private fun convergesAtIteration(n: Int, iteration: Int) {

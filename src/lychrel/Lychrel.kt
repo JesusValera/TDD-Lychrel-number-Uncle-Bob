@@ -3,16 +3,14 @@ package lychrel
 class Lychrel {
 
     fun convergesAtIteration(n: Int, limit: Int): Int {
-        if (isPalindrome(n))
-            return 0
+        return converge(n, 0)
+    }
 
-        val r = reverse(n)
-        val sum = r + n
-
-        if (!isPalindrome(sum))
-            return 2
-
-        return 1
+    private fun converge(n: Int, iteration: Int): Int {
+        return if (!isPalindrome(n))
+            converge(n + reverse(n), iteration + 1)
+        else
+            iteration
     }
 
     fun reverse(n: Int): Int {
