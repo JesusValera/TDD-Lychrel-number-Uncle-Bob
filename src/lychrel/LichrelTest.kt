@@ -16,6 +16,7 @@ class LichrelTest {
         convergesAtIteration(2, 0)
         convergesAtIteration(10, 1)
         convergesAtIteration(11, 0)
+        convergesAtIteration(19, 2)
     }
 
     private fun convergesAtIteration(n: Int, iteration: Int) {
@@ -44,5 +45,17 @@ class LichrelTest {
 
     private fun isPalindrome(n: Int) {
         assertTrue(Lychrel().isPalindrome(n))
+    }
+
+    @Test
+    fun reversals() {
+        reversed(1, 1)
+        reversed(12, 21)
+        reversed(123, 321)
+        reversed(1234, 4321)
+    }
+
+    private fun reversed(n: Int, r: Int) {
+        assertEquals(r, Lychrel().reverse(n))
     }
 }
