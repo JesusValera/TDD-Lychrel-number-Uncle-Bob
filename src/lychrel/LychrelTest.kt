@@ -18,6 +18,16 @@ class LychrelTest {
         convergesAtIteration(11, 0)
         convergesAtIteration(19, 2)
         convergesAtIteration(78, 4)
+        convergesAtIteration(89, 24)
+
+        doesNotConverge(196)
+        doesNotConverge(295)
+        doesNotConverge(394)
+        doesNotConverge(879)
+    }
+
+    private fun doesNotConverge(n: Int) {
+        convergesAtIteration(n, limit)
     }
 
     private fun convergesAtIteration(n: Int, iteration: Int) {
@@ -41,11 +51,11 @@ class LychrelTest {
     }
 
     private fun isNotPalindrome(n: Int) {
-        assertFalse(Lychrel().isPalindrome(n))
+        assertFalse(Lychrel().isPalindrome(n.toBigInteger()))
     }
 
     private fun isPalindrome(n: Int) {
-        assertTrue(Lychrel().isPalindrome(n))
+        assertTrue(Lychrel().isPalindrome(n.toBigInteger()))
     }
 
     @Test
@@ -57,6 +67,7 @@ class LychrelTest {
     }
 
     private fun reversed(n: Int, r: Int) {
-        assertEquals(r, Lychrel().reverse(n))
+        assertEquals(r.toBigInteger(), Lychrel().reverse(n.toBigInteger()))
     }
+
 }

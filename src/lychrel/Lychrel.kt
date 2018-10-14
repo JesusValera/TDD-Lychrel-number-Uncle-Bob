@@ -1,19 +1,21 @@
 package lychrel
 
+import java.math.BigInteger
+
 class Lychrel {
 
     fun convergesAtIteration(n: Int, limit: Int): Int {
-        return converge(n, 0)
+        return converge(BigInteger.valueOf(n.toLong()), 0, limit)
     }
 
-    private fun converge(n: Int, iteration: Int): Int {
-        return if (!isPalindrome(n))
-            converge(n + reverse(n), iteration + 1)
+    private fun converge(n: BigInteger, iteration: Int, limit: Int): Int {
+        return if (!isPalindrome(n) && iteration < limit)
+            converge(n.add(reverse(n)), iteration + 1, limit)
         else
             iteration
     }
 
-    fun reverse(n: Int): Int {
+    fun reverse(n: BigInteger): BigInteger {
         val nDigits: CharArray = n.toString().toCharArray()
         val rDigits = CharArray(nDigits.size)
         val lastIndex = nDigits.size - 1
@@ -22,10 +24,10 @@ class Lychrel {
             rDigits[i] = nDigits[lastIndex - i]
         }
 
-        return String(rDigits).toInt()
+        return String(rDigits).toBigInteger()
     }
 
-    fun isPalindrome(n: Int): Boolean {
+    fun isPalindrome(n: BigInteger): Boolean {
         val digits = n.toString()
         val lastIndex = digits.length - 1
 
